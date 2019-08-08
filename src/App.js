@@ -28,6 +28,18 @@ class App extends Component {
         topScore: this.state.score
       });
     }
+    if (this.state.score === 16) {
+      alert("You win! Keep playing to set the top score!")
+      this.setState({
+        clicked: []
+      })
+    }
+    if (this.state.score !== 16 && this.state.clicked.length === 16) {
+      alert("Wow, nothing can stop you! Keep going!")
+      this.setState({
+        clicked: []
+      })
+    }
   }
 
   removeWobble() {
@@ -55,6 +67,7 @@ class App extends Component {
         clicked: [],
         incorrect: "wobble"
       }, function () {
+        alert("Game over... Try again!")
         console.log(this.state.clicked);
       })
     }
