@@ -3,12 +3,11 @@ import "./style.css";
 
 function OfficeCard(props) {
     return (
-        <div onClick={() => props.handleClick(props.id)} className="imageCard">
-            <img alt={props.name} src={props.image} />
-            {/* <span className="nameSpan">
-                {props.name}
-            </span> */}
-        </div>
+        <a href="#wrapper">
+            <div onClick={() => props.handleClick(props.id)} className= {`imageCard ${props.incorrect}`}>
+                <img className="image" alt={props.name} src={props.image} />
+            </div>
+        </a>
     );
 }
 

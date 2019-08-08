@@ -12,13 +12,28 @@ class App extends Component {
     cards,
     score: 0,
     topScore: 0,
-    clicked: []
+    clicked: [],
+    incorrect: ""
   }
 
   componentDidMount() {
     this.setState({
       cards: this.shuffleCards(cards)
     });
+  }
+
+  checkScore() {
+    if (this.state.score > this.state.topScore) {
+      this.setState({
+        topScore: this.state.score
+      });
+    }
+  }
+
+  removeWobble() {
+    this.setState({
+      incorrect: ""
+    })
   }
 
   shuffleCards = array => {
@@ -33,33 +48,34 @@ class App extends Component {
   }
 
   handleClick = id => {
+    this.removeWobble();
     if (this.state.clicked.includes(id)) {
       this.setState({
         score: 0,
-        clicked: []
-      });
+        clicked: [],
+        incorrect: "wobble"
+      }, function () {
+        console.log(this.state.clicked);
+      })
     }
     else {
-      this.setState({
+      this.setState(previousState => ({
         score: this.state.score + 1,
-        clicked: this.state.clicked.push(id)
-      });
+        clicked: [...previousState.clicked, id]
+      }), function () {
+        this.checkScore();
+        console.log(this.state.clicked);
+      })
     }
     this.setState({
       cards: this.shuffleCards(cards)
     });
-    console.log(this.state.clicked)
   }
-
-  // handleIncorrectClick = id => {
-
-  // }
-
 
   render() {
     return (
       <div>
-        <Navbar score={this.state.score} topScore={this.state.topScore}/>
+        <Navbar score={this.state.score} topScore={this.state.topScore} />
         <Banner>
           <h1>Click a picture to get started...</h1>
           <h3>But don't click the same picture more than once!</h3>
@@ -67,6 +83,7 @@ class App extends Component {
         <Wrapper>
           {this.state.cards.map(employee => (
             <OfficeCard
+              incorrect={this.state.incorrect}
               handleClick={this.handleClick}
               id={employee.id}
               key={employee.id}

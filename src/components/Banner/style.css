@@ -1,0 +1,9 @@
+.banner {
+    padding: 180px 20px;
+    padding-bottom: 280px; 
+    text-align: left;
+    background-image: url("banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

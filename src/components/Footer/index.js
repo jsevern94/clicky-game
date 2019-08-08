@@ -1,10 +1,11 @@
 import React from "react";
+import "./style.css";
 
 function Footer() {
     return (
-        <footer className="page-footer font-small blue">
-            <div className="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+        <footer className="footer bg-info">
+            <div className="text-center py-3">© 2019 Copyright:
+                <a href="https://github.com/jsevern94/clicky-game" rel="noopener noreferrer" target="_blank"> Jonah Severn</a>
             </div>
         </footer>
     );
