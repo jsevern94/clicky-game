@@ -1,0 +1,21 @@
+.imageCard {
+    position: relative;
+    margin: 10px 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all .05s ease-in-out; 
+}
+
+.nameSpan {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 5px;
+    right: 0;
+}
+
+.imageCard:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px 0 rgba(7, 36, 224, 0.4), 0 6px 20px 0 rgba(7, 36, 224, 0.35);
+}
